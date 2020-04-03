@@ -4,132 +4,7 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
     <title>We were on a break!</title>
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"><link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    
-    <style>
-        *{ padding: 0; margin: 0; }
-        :root {
-            --main-bg: #000000;
-            --main-color: #cccccc;
-            --sec-bg: #18191a;
-            --sec-color: #e6e6e6;
-            --grey: #808080;
-            --primary-color: #1da1f2;
-            --success-color:#28a745;
-            --warning-color:#ffc107;
-            --danger-color:#dc3545;
-            --primary-bg: #b8daff;
-            --success-bg: #c3e6cb;
-            --warning-bg: #ffeeba;
-            --danger-bg: #f5c6cb;
-        }
-        html { background-color: var(--main-bg); color: var(--main-color); text-align: center; }
-        a, button { text-decoration: none; font-weight: bold; color: var(--main-color); border: none; cursor: pointer; }
-
-        .main-color-bg { background-color: var(--main-color); }
-        .sec-color-bg { background-color: var(--sec-color); }
-        .primary-color-bg { background-color: var(--primary-color); }
-        .success-color-bg { background-color: var(--success-color); }
-        .warning-color-bg { background-color: var(--warning-color); }
-        .danger-color-bg { background-color: var(--danger-color); }
-
-        .grey-color { color: var(--grey); }
-        .main-color { color: var(--main-color); }
-        .sec-color { color: var(--sec-color); }
-        .primary-color { color: var(--primary-color); }
-        .success-color { color: var(--success-color); }
-        .warning-color { color: var(--warning-color); }
-        .danger-color { color: var(--danger-color); }
-
-        .grey-bg { background-color: var(--grey); }
-        .main-bg { background-color: var(--main-bg); }
-        .sec-bg { background-color: var(--sec-bg); }
-        .primary-bg { background-color: var(--primary-bg); }
-        .success-bg { background-color: var(--success-bg); }
-        .warning-bg { background-color: var(--warning-bg); }
-        .danger-bg { background-color: var(--danger-bg); }
-
-        .grey-border { border: 1.5px solid var(--grey); }
-        .main-border { border: 1.5px solid var(--main-color); }
-        .sec-border { border: 1.5px solid var(--sec-color); }
-        .primary-border { border: 1.5px solid var(--primary-color); }
-        .success-border { border: 1.5px solid var(--success-color); }
-        .warning-border { border: 1.5px solid var(--warning-color); }
-        .danger-border { border: 1.5px solid var(--danger-color); }
-
-        .m-4 { margin: 4px; } .m-8 { margin: 8px; } .m-12 { margin: 12px; }
-        .mt-4 { margin-top: 4px; } .mt-8 { margin-top: 8px; } .mt-12 { margin-top: 12px; }
-        .mr-4 { margin-right: 4px; } .mr-8 { margin-right: 8px; } .mr-12 { margin-right: 12px; }
-        .mb-4 { margin-bottom: 4px; } .mb-8 { margin-bottom: 8px; } .mb-12 { margin-bottom: 12px; }
-        .ml-4 { margin-left: 4px; } .ml-8 { margin-left: 8px; } .ml-12 { margin-left: 12px; }
-
-        .p-4 { padding: 4px; } .p-8 { padding: 8px; } .p-12 { padding: 12px; }
-        .pt-4 { padding-top: 4px; } .pt-8 { padding-top: 8px; } .pt-12 { padding-top: 12px; }
-        .pr-4 { padding-right: 4px; } .pr-8 { padding-right: 8px; } .pr-12 { padding-right: 12px; }
-        .pb-4 { padding-bottom: 4px; } .pb-8 { padding-bottom: 8px; } .pb-12 { padding-bottom: 12px; }
-        .pl-4 { padding-left: 4px; } .pl-8 { padding-left: 8px; } .pl-12 { padding-left: 12px; }
-
-        .br-5 { border-radius: 5px; }
-        .br-10 { border-radius: 10px; }
-        .br-round { border-radius: 2000px; }
-        .bold-text { font-weight: bold; }
-        .underlined { text-decoration: underline; }
-
-        .pos-fixed { position: fixed; }
-        .pos-absolute { position: absolute; }
-        .pos-relative { position: relative; }
-
-        .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); }
-
-        .row-complex {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-        }
-        .col {
-            -ms-flex-preferred-size: 0;
-            flex-basis: 0;
-            -ms-flex-positive: 1;
-            flex-grow: 1;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-        .col-3 {
-            -ms-flex: 0 0 33.333333%;
-            flex: 0 0 33.333333%;
-            max-width: 33.333333%
-        }
-        .col-6 {
-            -ms-flex: 0 0 66.666667%;
-            flex: 0 0 66.666667%;
-            max-width: 66.666667%
-        }
-
-        .block-box { display: block; }
-        .none-box { display: none; }
-
-        .navbar {
-            z-index: 999;
-            width: 100vw;
-            position: fixed;
-            left: 0;
-        }
-
-        .main-btn { font-size: 16px; }
-        .main-btn.active-btn { color: var(--primary-color); border: 1px solid var(--primary-color); }
-        .season-number {
-            cursor: pointer;
-            text-align: left;
-            border: none;
-            color: var(--main-color);
-            max-width: 400px;
-            width: 95%;
-            border-bottom: 2px solid var(--sec-bg);
-        }
-        .season-number img { width: 30px; }
-        .season-number span { font-size: 19px; vertical-align: 40%; }
-    </style>
-
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
@@ -140,7 +15,7 @@
     <br/><br/><br/><br/><br/>
 
     <div class="container">
-        <div class="opt-container">
+        <div class="opt-container p-4 m-4">
             <div class="row mb-12 pb-12">
                 <!--<button class="main-btn sec-bg sec-color bold-text br-10 m-4 p-12 ml-8" id="home-btn">&#8617; HOME</button>-->
                 <button class="main-btn sec-bg sec-color bold-text br-10 m-8 p-12 ml-12" id="watch-btn" onclick="opt_swithcer()">&#9734; WATCH</button>
@@ -154,102 +29,12 @@
                 <img id="main-img" src="img/f_main.png">
             </div>
         </div>
-        <div class="file-container"></div>
+        <div class="file-container p-4 m-4"></div>
     </div>
 
     <br/><br/><br/><br/><br/><br/>
 
-    <script>
-
-        var con = document.getElementsByClassName("container")[0];
-        var mi = document.getElementById("main-img");
-        var oc = document.getElementsByClassName("opt-container")[0];
-        var fc = document.getElementsByClassName("file-container")[0];
-        var wb = document.getElementById("watch-btn");
-        var eb = document.getElementById("explore-btn");
-        var scb = document.getElementById("season-chooser-box");
-
-        mi.style.height = "80vw";
-
-        if(screen.width > 820) {
-            mi.style.height = "35vw";
-            con.classList.add("row-complex");
-            oc.classList.add("col-3");
-            fc.classList.add("col-6");
-        }
-
-        function season_box() {
-            var slb = document.getElementById("season-list-box");
-            var s = '';
-            for(var i = 1; i <= 10; i++) {
-                s += '<button class="season-number main-bg p-4 m-8" id="s'+i+'" onclick="season_open(this.id)">' +
-                        '<img src="img/s/s'+i+'.png" class="br-round mr-12 ml-12">' +
-                        '<span class="bold-text">Season '+i+'</span>' +
-                    '</button>';
-            }
-            slb.innerHTML = s;
-        }
-
-        function opt_swithcer() { scb.classList.toggle("none-box"); wb.classList.toggle("active-btn"); }
-
-        function xreq(h_file_url) {
-            var hf = "files/";
-            var a;
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    if(h_file_url == "about.html" || h_file_url == "explore.html") {
-                        a = this.responseText;
-                    } else {
-                        jf = JSON.parse(this.responseText);
-                        a = season_epi_disp(jf);
-                    }
-                    fc.innerHTML = a;
-                }
-            };
-            xhttp.open("GET", hf + h_file_url, true);
-            xhttp.send();
-        }
-
-        function season_open(s_id) {
-            mi.src = "img/sb/"+s_id+".jpg";
-            opt_swithcer();
-            xreq(s_id+".json");
-        }
-
-        function season_epi_disp(jf) {
-            var s = '<div class="row-complex" style="text-align: left;">';
-            for (var i in jf["timeline"]) {
-
-                epi_num = i;
-                img_src = jf["timeline"][i]["img_src"];
-                title = jf["timeline"][i]["title"];
-                rating = jf["timeline"][i]["rating"];
-                airdate = jf["timeline"][i]["airdate"];
-                vid_link = jf["timeline"][i]["vid"];
-                des = jf["timeline"][i]["des"];
-
-                wen = epi_num.split("E");
-                epi_num = wen[0] + " &#9900; E" + wen[1];
-
-                s += '<div class="col m-12 p-12" id="" onclick="watch_epi(this.id)">' +
-                        '<img src="'+img_src+'"><br/>' +
-                        '<h3><span class="primary-color mr-8">'+epi_num+'</span> '+title+'</h3>' +
-                        '<p class="grey-color">'+des+'</p>' +
-                    '</div>';
-
-            }
-            return s+"</div>";
-        }
-
-        function go_home() { mi.src = "img/f_main.png"; xreq("about.html"); }
-
-        function go_explore() { xreq("explore.html"); }
-
-        season_box();
-        xreq("about.html");
-
-    </script>
+    <script src="main.js"></script>
 
 </body>
 
