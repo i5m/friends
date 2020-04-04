@@ -1,9 +1,9 @@
-*{ padding: 0; margin: 0; }
+* { padding: 0; margin: 0; outline: 0; text-shadow: 4px 4px 4px #000000; }
 :root {
     --main-bg: #18191a;
-    --main-color: #b0b3b8;
+    --main-color: #e4e6eb;
     --sec-bg: #3a3b3c;
-    --sec-color: #e4e6eb;
+    --sec-color: #b0b3b8;
     --grey: #808080;
     /*--primary-color: #1877f2;*/
     --primary-color: #3285fa;
@@ -15,9 +15,54 @@
     --warning-bg: #ffeeba;
     --danger-bg: #f5c6cb;
 }
-html { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased; background-color: var(--main-bg); color: var(--main-color); text-align: center; }
-a, button { text-decoration: none; font-weight: bold; color: var(--main-color); border: none; cursor: pointer; }
+html {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--main-bg);
+    color: var(--main-color);
+    text-align: center;
+}
+a, button {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--main-color);
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+#grand {
+    z-index: -2;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-image: url(img/f_main.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(5px) brightness(35%);
+}
+
+#try0 {
+    z-index: -1;
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--main-bg);
+    filter: blur(1px) opacity(0.8);
+}
+
+/*::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: var(--grey); border-radius: 10px; }*/
+
+html::-webkit-scrollbar { display: none; }
+html { -ms-overflow-style: none; }
 
 .main-color-bg { background-color: var(--main-color); }
 .sec-color-bg { background-color: var(--sec-color); }
@@ -67,6 +112,7 @@ a, button { text-decoration: none; font-weight: bold; color: var(--main-color); 
 .br-round { border-radius: 2000px; }
 .bold-text { font-weight: bold; }
 .underlined { text-decoration: underline; }
+.pointer { cursor: pointer; }
 
 .pos-fixed { position: fixed; }
 .pos-absolute { position: absolute; }
@@ -104,6 +150,17 @@ a, button { text-decoration: none; font-weight: bold; color: var(--main-color); 
 .block-box { display: block; }
 .none-box { display: none; }
 
+.h1, h1 { font-size: 2.5rem; }
+.h2, h2 { font-size: 2rem; }
+.h3, h3 { font-size: 1.75rem; }
+.h4, h4 { font-size: 1.5rem; }
+.h5, h5 { font-size: 1.25rem; }
+.h6, h6 { font-size: 1rem; }
+
+.tal { text-align: left; }
+.tar { text-align: right; }
+.tac { text-align: center; }
+
 .navbar {
     z-index: 99;
     width: 100vw;
@@ -112,45 +169,37 @@ a, button { text-decoration: none; font-weight: bold; color: var(--main-color); 
     border-bottom: 2px solid var(--sec-bg);
 }
 
-.main-btn { font-size: 16px; cursor: pointer; }
-#watch-btn { max-width: 350px; margin: 0 auto; }
+#season-chooser { margin: 50px auto; }
+#watch-btn { max-width: 350px; font-size: 18px; }
 
-#sub-img-box {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 20px auto;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    border: 7px solid var(--main-bg);
-}
+#des-details span { font-size: 1.2rem; vertical-align: 42%; margin-left: 15px; }
 
-#sub-summary-box { text-align: left; }
+#main-section { margin: 8px; }
 
 .season-number {
-    cursor: pointer;
     text-align: left;
     border: none;
     width: 95%;
     border-bottom: 2px solid var(--sec-bg);
 }
-.season-number svg { width: 35px; margin-right: 12px; }
 .season-number span { font-size: 19px; vertical-align: 50%; }
 
-.episode-number { text-align: left; margin: 7px 7px 30px 7px; }
-.episode-number summary { cursor: pointer; }
-.episode-number button { cursor: pointer; text-align: left; }
+.episode-number { text-align: left; margin: 15px auto; }
+.episode-number .title { font-size: 1.15rem; }
 .episode-number span { left: 5px; top: 5px; }
-.episode-number .title { font-size: 1.1rem; }
 
 @media only screen and (min-width: 851px) {
-    .opt-container { left: 0; width: 27.5vw; }
-    .file-container { position: absolute; right: 0; width: 67.5vw; }
+    #sidecar { left: 0; width: 27.5vw; }
+    #try0 { width: 30vw; position: fixed; }
+    #main-section { position: absolute; right: 0; width: 67.5vw; }
 }
 @media only screen and (max-width: 851px) { .season-number { width: 40vw; } }
 @media only screen and (max-width: 410px) { .season-number { width: 90%; } }
-@media only screen and (min-width: 1051px) { .episode-number img { width: 21vw; } }
-@media only screen and (max-width: 1050px) { .episode-number img { width: 30vw; } }
-@media only screen and (max-width: 600px) { .episode-number img { width: 45vw; } }
-@media only screen and (max-width: 450px) { .episode-number img { width: 90vw; } }
+@media only screen and (min-width: 1051px) { .episode-number img { width: 21.5vw; } }
+@media only screen and (max-width: 1050px) { .episode-number img { width: 33vw; } }
+@media only screen and (max-width: 835px) { .episode-number img { width: 30vw; } }
+@media only screen and (max-width: 700px) { .episode-number img { width: 45vw; } }
+@media only screen and (max-width: 450px) {
+    .episode-number img { width: 88vw; }
+    #main-section { margin: 15px; }
+}

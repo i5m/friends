@@ -8,36 +8,38 @@
 </head>
 <body>
 
-    <div id="back-grnd"></div>
+    <div id="grand"></div>
 
-    <nav class="navbar p-44 pt-8 pos-fixed main-bg">
-        <a href="#" class="nav-item" id="f_logo"><img src="img/f_logo.png" width="150"></a>
+    <nav class="navbar p-8 pos-fixed main-bg">
+        <a href="index.html" id="f_logo"><img src="img/f_logo.png" width="150"></a>
     </nav>
 
-    <br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/>
 
     <div class="container">
-        <div class="opt-container p-4 m-4">
-            <details id="season-chooser-box">
-                <summary class="main-btn primary-color-bg sec-color bold-text br-10 m-8 p-12 ml-12" id="watch-btn" onclick="opt_switcher()"> WATCH</summary>
-                <br/><h3>Select a season: </h3>
-                <div id="season-list-box"></div>
-            </details>
-            <div id="img-summary-box" class="mt-12 p-12">
-                <div id="sub-img-box" class="sec-bg"></div>
-                <div id="sub-summary-box">
-                    <h1 id="season-heading" class="primary-color"></h1><br/>
-                    <p class="bold-text" id="season-text"></p>
+        <div id="sidecar" class="p-8 m-8">
+            <div id="try0"></div>
+            <div id="description" class="tal">
+                <h1 id="des-heading"></h1><br/>
+                <h5 class="bold-text sec-color" id="des-text"></h5>
+                <div id="des-details" class="p-4 mt-12">
+                    <div class="p-4 m-8"><img src="img/des/time.svg" width="30"><span class="bold-text"></span></div>
+                    <div class="p-4 m-8"><img src="img/des/rate.svg" width="30"><span class="bold-text"></span></div>
+                    <div class="p-4 m-8 underlined pointer"><img src="img/des/share.svg" width="30"><span class="bold-text">Share now...</span></div>
                 </div>
             </div>
+            <details id="season-chooser">
+                <summary class="primary-color-bg bold-text br-10 m-8 p-12 pointer" id="watch-btn" onclick="opt_switcher()">WATCH</summary>
+                <br/><h5>Select a season: </h5><br/>
+                <div id="season-list"></div>
+            </details>
         </div>
-        <div class="file-container p-4 m-4"></div>
+        <div id="main-section" class="p-8"></div>
     </div>
 
-    <br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/>
 
     <script src="main.js"></script>
 
 </body>
-
 </html>
