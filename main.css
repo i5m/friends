@@ -1,4 +1,4 @@
-* { padding: 0; margin: 0; outline: 0; text-shadow: 4px 4px 4px #000000; }
+* { padding: 0; margin: 0; outline: 0; }
 :root {
     --main-bg: #18191a;
     --main-color: #e4e6eb;
@@ -31,7 +31,7 @@ a, button {
     background-color: transparent;
 }
 
-#grand {
+/*#grand {
     z-index: -2;
     position: fixed;
     bottom: 0;
@@ -55,7 +55,7 @@ a, button {
     height: 100%;
     background-color: var(--main-bg);
     filter: blur(1px) opacity(0.8);
-}
+}*/
 
 /*::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { border-radius: 10px; }
@@ -169,12 +169,10 @@ html { -ms-overflow-style: none; }
     border-bottom: 2px solid var(--sec-bg);
 }
 
-#season-chooser { margin: 50px auto; }
+#season-chooser { margin: 25px auto; }
 #watch-btn { max-width: 350px; font-size: 18px; }
 
 #des-details span { font-size: 1.2rem; vertical-align: 42%; margin-left: 15px; }
-
-#main-section { margin: 8px; }
 
 .season-number {
     text-align: left;
@@ -190,7 +188,7 @@ html { -ms-overflow-style: none; }
 
 @media only screen and (min-width: 851px) {
     #sidecar { left: 0; width: 27.5vw; }
-    #try0 { width: 30vw; position: fixed; }
+    /*#try0 { width: 30vw; position: fixed; }*/
     #main-section { position: absolute; right: 0; width: 67.5vw; }
 }
 @media only screen and (max-width: 851px) { .season-number { width: 40vw; } }

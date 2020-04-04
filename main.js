@@ -38,12 +38,11 @@ function opt_switcher() {
 }
 
 function xreq(url) {
-    var res;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if(url == "s.json") { data = JSON.parse(this.responseText); }
-            else { explore = this.responseText; }
+            else if(url == "explore.html") { explore = this.responseText; go_home(); }
         }
     };
     xhttp.open("GET", files_loc + url, true);
@@ -56,7 +55,7 @@ function season_open(s) {
     jf = data[s];
     dh.innerHTML = "Season " + jf["season"];
     dt.innerHTML = jf["about"];
-    dd[0].getElementsByTagName("span")[0].innerHTML = "Year " + jf["year"];
+    dd[0].getElementsByTagName("span")[0].innerHTML = "Year: " + jf["year"];
     var s = '';
     s += '<div class="row-complex">';
     for (var i in jf["timeline"]) {
@@ -90,11 +89,10 @@ function go_home() {
     dh.innerHTML = "Friends";
     dt.innerHTML = about;
     ms.innerHTML = explore;
-    dd[0].getElementsByTagName("span")[0].innerHTML = "Year " + "1994 - 2004";
+    dd[0].getElementsByTagName("span")[0].innerHTML = "Year: " + "1994 - 2004";
     dd[1].getElementsByTagName("span")[0].innerHTML = "Rating: 8.9 Stars";
 }
 
 xreq("explore.html");
-go_home();
 season_list_inject();
 xreq("s.json");
