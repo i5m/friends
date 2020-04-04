@@ -8,7 +8,9 @@
 </head>
 <body>
 
-    <nav class="navbar p-8 pt-12 pos-fixed sec-bg">
+    <div id="back-grnd"></div>
+
+    <nav class="navbar p-44 pt-8 pos-fixed main-bg">
         <a href="#" class="nav-item" id="f_logo"><img src="img/f_logo.png" width="150"></a>
     </nav>
 
@@ -16,17 +18,17 @@
 
     <div class="container">
         <div class="opt-container p-4 m-4">
-            <div class="row mb-12 pb-12">
-                <!--<button class="main-btn sec-bg sec-color bold-text br-10 m-4 p-12 ml-8" id="home-btn">&#8617; HOME</button>-->
-                <button class="main-btn sec-bg sec-color bold-text br-10 m-8 p-12 ml-12" id="watch-btn" onclick="opt_swithcer()">&#9734; WATCH</button>
-                <button class="main-btn sec-bg sec-color bold-text br-10 m-8 p-12 mr-12" id="explore-btn" onclick="go_explore()">EXPLORE &#8618;</button>
-            </div>
-            <div id="season-chooser-box" class="none-box">
+            <details id="season-chooser-box">
+                <summary class="main-btn primary-color-bg sec-color bold-text br-10 m-8 p-12 ml-12" id="watch-btn" onclick="opt_switcher()"> WATCH</summary>
                 <br/><h3>Select a season: </h3>
                 <div id="season-list-box"></div>
-            </div>
-            <div class="mt-12 p-12">
-                <img id="main-img" src="img/f_main.png">
+            </details>
+            <div id="img-summary-box" class="mt-12 p-12">
+                <div id="sub-img-box" class="sec-bg"></div>
+                <div id="sub-summary-box">
+                    <h1 id="season-heading" class="primary-color"></h1><br/>
+                    <p class="bold-text" id="season-text"></p>
+                </div>
             </div>
         </div>
         <div class="file-container p-4 m-4"></div>

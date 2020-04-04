@@ -1,11 +1,12 @@
 *{ padding: 0; margin: 0; }
 :root {
-    --main-bg: #000000;
-    --main-color: #cccccc;
-    --sec-bg: #18191a;
-    --sec-color: #e6e6e6;
+    --main-bg: #18191a;
+    --main-color: #b0b3b8;
+    --sec-bg: #3a3b3c;
+    --sec-color: #e4e6eb;
     --grey: #808080;
-    --primary-color: #1da1f2;
+    /*--primary-color: #1877f2;*/
+    --primary-color: #3285fa;
     --success-color:#28a745;
     --warning-color:#ffc107;
     --danger-color:#dc3545;
@@ -104,50 +105,51 @@ a, button { text-decoration: none; font-weight: bold; color: var(--main-color); 
 .none-box { display: none; }
 
 .navbar {
-    z-index: 999;
+    z-index: 99;
     width: 100vw;
     position: fixed;
     left: 0;
+    border-bottom: 2px solid var(--sec-bg);
 }
 
-#main-img { height: 80vw; }
-#main-img.main-img-10 { height: 60vw; }
+.main-btn { font-size: 16px; cursor: pointer; }
+#watch-btn { max-width: 350px; margin: 0 auto; }
 
-.main-btn { font-size: 16px; }
-.main-btn.active-btn { color: var(--primary-color); border: 1px solid var(--primary-color); }
+#sub-img-box {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 20px auto;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border: 7px solid var(--main-bg);
+}
+
+#sub-summary-box { text-align: left; }
 
 .season-number {
     cursor: pointer;
     text-align: left;
     border: none;
-    color: var(--main-color);
-    max-width: 400px;
     width: 95%;
     border-bottom: 2px solid var(--sec-bg);
 }
-.season-number img { width: 30px; }
-.season-number span { font-size: 19px; vertical-align: 40%; }
+.season-number svg { width: 35px; margin-right: 12px; }
+.season-number span { font-size: 19px; vertical-align: 50%; }
 
-.season-about { text-align: left; margin-bottom: 35px; }
 .episode-number { text-align: left; margin: 7px 7px 30px 7px; }
 .episode-number summary { cursor: pointer; }
 .episode-number button { cursor: pointer; text-align: left; }
-.episode-number img { width: inherit; }
 .episode-number span { left: 5px; top: 5px; }
+.episode-number .title { font-size: 1.1rem; }
 
 @media only screen and (min-width: 851px) {
-    #main-img { height: 32vw; }
-    #main-img.main-img-10 { height: 16vw; }
-    .opt-container {
-        left: 0;
-        width: 27.5vw;
-    }
-    .file-container {
-        position: absolute;
-        right: 0;
-        width: 67.5vw;
-    }
+    .opt-container { left: 0; width: 27.5vw; }
+    .file-container { position: absolute; right: 0; width: 67.5vw; }
 }
+@media only screen and (max-width: 851px) { .season-number { width: 40vw; } }
+@media only screen and (max-width: 410px) { .season-number { width: 90%; } }
 @media only screen and (min-width: 1051px) { .episode-number img { width: 21vw; } }
 @media only screen and (max-width: 1050px) { .episode-number img { width: 30vw; } }
 @media only screen and (max-width: 600px) { .episode-number img { width: 45vw; } }
