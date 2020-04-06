@@ -5,6 +5,7 @@
     <title>We were on a break!</title>
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"><link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 </head>
 <body>
 
@@ -17,24 +18,38 @@
     <br/><br/><br/><br/>
 
     <div class="container">
-        <div id="sidecar" class="p-8 m-8">
+        <div id="sidecar" class="p-12 m-12">
             <!--<div id="try0"></div>-->
             <div id="description" class="tal">
-                <h1 id="des-heading"></h1><br/>
+                <h4 id="des-num" class="primary-color none-box mb-8"></h4>
+                <h3 id="des-title" class="none-box mb-8"></h3>
+                <h1 id="des-heading" class="mb-8"></h1>
                 <h5 class="bold-text sec-color" id="des-text"></h5>
-                <div id="des-details" class="p-4 mt-12">
-                    <div class="p-4 m-8"><img src="img/des/time.svg" width="30"><span class="bold-text"></span></div>
-                    <div class="p-4 m-8"><img src="img/des/rate.svg" width="30"><span class="bold-text"></span></div>
-                    <div class="p-4 m-8 underlined pointer"><img src="img/des/share.svg" width="30"><span class="bold-text">Share now...</span></div>
+                <div id="des-details" class="p-4 mt-8 mb-8">
+                    <div class="p-4 m-8"><img src="img/des/time.svg" width="30"><span class="bold-text ml-12"></span></div>
+                    <div class="p-4 m-8"><img src="img/des/love.svg" width="30"><span class="bold-text ml-12"></span></div>
+                    <div class="row pt-12 mt-12">
+                        <a id="cloud-btn" href="#" target="_blank" class="p-8 m-8 sec-bg br-10 tac"><img src="img/des/cloud.svg" width="25"><span class="bold-text ml-4">Torrent</span></a>
+                        <button class="p-8 m-8 sec-bg br-10 tac" onclick="share_btn()"><img src="img/des/share.svg" width="25"><span class="bold-text ml-4">Share</span></button>
+                    </div>
                 </div>
             </div>
             <details id="season-chooser">
-                <summary class="primary-color-bg bold-text br-10 m-4 p-8 pointer" id="watch-btn" onclick="opt_switcher()">WATCH</summary>
+                <summary class="primary-color-bg bold-text br-10 m-4 p-12 pointer animated tada" id="watch-btn" onclick="opt_switcher()">WATCH</summary>
                 <br/><h5>Select a season: </h5><br/>
                 <div id="season-list"></div>
             </details>
         </div>
-        <div id="main-section" class="p-8 m-8"></div>
+        <div id="centercar" class="p-8 m-8">
+            <div id="main-section"></div>
+            <div id="video-box" class="none-box">
+                <button class="block-box h4 m-4 mb-12 pb-12" onclick="back_epi()">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    <span>Back</span>
+                </button>
+                <video controls id="epi-video"></video>
+            </div>
+        </div>
     </div>
 
     <br/><br/><br/><br/>

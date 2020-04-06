@@ -5,8 +5,7 @@
     --sec-bg: #3a3b3c;
     --sec-color: #b0b3b8;
     --grey: #808080;
-    /*--primary-color: #1877f2;*/
-    --primary-color: #3285fa;
+    --primary-color: #1877f2;
     --success-color:#28a745;
     --warning-color:#ffc107;
     --danger-color:#dc3545;
@@ -172,32 +171,36 @@ html { -ms-overflow-style: none; }
 #season-chooser { margin: 25px auto; }
 #watch-btn { max-width: 350px; font-size: 18px; }
 
-#des-details span { font-size: 1.2rem; vertical-align: 42%; margin-left: 15px; }
+#des-details span { font-size: 1.2rem; vertical-align: 42%; }
+#des-details .row span { vertical-align: 25%; }
+
+#video-box button.h4 span { vertical-align: 15%; }
+#epi-video { border-radius: 10px; width: 90vw; }
 
 .season-number {
     text-align: left;
     border: none;
     width: 95%;
-    border-bottom: 2px solid var(--sec-bg);
+    border-bottom: 1.5px solid var(--sec-bg);
 }
 .season-number span { font-size: 19px; vertical-align: 50%; }
 
 .episode-number { text-align: left; margin: 15px auto; }
+/*.episode-number img:hover { transform: scale(0.96); }*/
 .episode-number .title { font-size: 1.15rem; }
 .episode-number span { left: 5px; top: 5px; }
+.episode-number p { border-left: 2px solid var(--grey); }
 
 @media only screen and (min-width: 851px) {
     #sidecar { left: 0; width: 27.5vw; }
+    #epi-video { width: 60vw; }
     /*#try0 { width: 30vw; position: fixed; }*/
-    #main-section { position: absolute; right: 0; width: 67.5vw; }
+    #centercar { right: 0; width: 67.5vw; }
 }
 @media only screen and (max-width: 851px) { .season-number { width: 40vw; } }
-@media only screen and (max-width: 410px) { .season-number { width: 90%; } }
+@media only screen and (max-width: 440px) { .season-number { width: 94%; } }
 @media only screen and (min-width: 1051px) { .episode-number img { width: 21.5vw; } }
 @media only screen and (max-width: 1050px) { .episode-number img { width: 33vw; } }
 @media only screen and (max-width: 835px) { .episode-number img { width: 30vw; } }
 @media only screen and (max-width: 700px) { .episode-number img { width: 45vw; } }
-@media only screen and (max-width: 450px) {
-    .episode-number img { width: 88vw; }
-    #main-section { margin: 15px; }
-}
+@media only screen and (max-width: 450px) { .episode-number img { width: 88vw; } }
