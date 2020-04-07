@@ -2,7 +2,6 @@
 const sc = document.getElementById("sidecar");
 const dd = document.getElementById("des-details").getElementsByTagName("div");
 const dn = document.getElementById("des-num");
-const dtt = document.getElementById("des-title");
 const dh = document.getElementById("des-heading");
 const dt = document.getElementById("des-text");
 const scb = document.getElementById("season-chooser");
@@ -13,15 +12,7 @@ const cc = document.getElementById("centercar");
 const ms = document.getElementById("main-section");
 const vb = document.getElementById("video-box");
 const video = document.getElementById('epi-video');
-
 const files_loc = "data/";
-var data;
-var explore;
-var jf;
-var dh_temp;
-var dt_temp;
-var source;
-
 const about = 'Follow the lives of six reckless adults living in Manhattan, as they indulge in adventures which make their lives both troublesome and happening.';
 const torrent_main = 'magnet:?xt=urn:btih:09408d97dd210ba9835e566fd390c8ad09c177bf&dn=Friends.Complete.Series.S01-S10.720p.BluRay.2CH.x265.HEVC-PSA&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Fzer0day.ch%3A1337&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969';
 const torrents = [
@@ -36,19 +27,20 @@ const torrents = [
     'magnet:?xt=urn:btih:95e340a37867ce9270b9fda9270ed9236f093bba&dn=Friends+Season+9+Complete+720p.BRrip.mrlss.Sujaidr+%28pimprg%29&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Fzer0day.ch%3A1337&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969',
     'magnet:?xt=urn:btih:753c3b362e22ee808b49f8e864b99fded7fdab57&dn=Friends+Season+10+Complete+720p.BRrip.Sujaidr+%28pimprg%29&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Fzer0day.ch%3A1337&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969'
 ]
+var data = explore_ele = explore_js = jf = dh_temp = dt_temp = source = sw = '';
 
 function season_list_inject() {
     var s = '';
     for(var i = 1; i <= 10; i++) {
-        s += '<button class="season-number p-4 m-4" id="S'+i+'" onclick="season_open(this.id)">' +
+        s += '<button class="season-number p-4 m-4 tal" id="S'+i+'" onclick="season_open(this.id)">' +
                 '<img src="img/s/'+i+'.svg" width="35" class="mr-12 ml-12">' +
-                '<span class="bold-text">Season '+i+'</span>' +
+                '<span>Season '+i+'</span>' +
             '</button>';
     }
     sl.innerHTML = s;
 }
 
-if(screen.width > 850) { sw = true; }
+if(screen.width > 950) { sw = true; }
 else { sw = false; }
 
 if(sw) {
@@ -65,7 +57,7 @@ function opt_switcher() {
         sc.classList.toggle("pos-absolute");
         sc.classList.toggle("pos-fixed");
     }
-    document.body.scrollTop = 0;
+    window.scrollTo({ top: 400, behavior: 'smooth' });
 }
 
 function animationRouter(element, str, animationOutName, animationInName) {
@@ -86,9 +78,9 @@ function xreq(url) {
         if (this.readyState == 4 && this.status == 200) {
             if(url == "ss.json") {
                 data = JSON.parse(this.responseText);
-            } else if(url == "explore.html") {
-                explore = this.responseText;
-                go_home();
+            } else if(url == "explore.json") {
+                explore_js = JSON.parse(this.responseText);
+                go_explore();
             }
         }
     };
@@ -96,14 +88,29 @@ function xreq(url) {
     xhttp.send();
 }
 
+function go_explore() {
+    go_home();
+}
+
+function go_home() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    cb.href = torrent_main;
+    dh.innerHTML = "<h1 class='bold-text'>Friends</h1>";
+    dt.innerHTML = about;
+    dd[0].getElementsByTagName("span")[0].innerHTML = "Range: <b>1994 - 2004</b>";
+    dd[1].getElementsByTagName("span")[0].innerHTML = "Most Viewed: <b>The One Where Rachel Has a Baby</b>";
+    animationRouter(sc, null, null, "bounceInLeft");
+    animationRouter(ms, explore_ele, null, "bounceInRight");
+}
+
 function season_open(s) {
     scb.toggleAttribute("open");
     opt_switcher();
     jf = data[s];
-    dh.innerHTML = "Season " + jf["season"];
+    dh.innerHTML = "<h2 class='bold-text'>Season " + jf["season"] + "</h2>";
     dt.innerHTML = jf["about"];
-    dd[0].getElementsByTagName("span")[0].innerHTML = "<u>Year</u>: " + jf["year"];
-    dd[1].getElementsByTagName("span")[0].innerHTML = "<u>Most Viewed</u>: " + jf["mv"];
+    dd[0].getElementsByTagName("span")[0].innerHTML = "Year: <b>" + jf["year"] + "</b>";
+    dd[1].getElementsByTagName("span")[0].innerHTML = "Most Viewed: <b>" + jf["mv"] + "</b>";
     cb.href = torrents[s.slice(1)-1];
     var s = '';
     s += '<div class="row-complex">';
@@ -119,19 +126,19 @@ function season_open(s) {
         wen = wen[0] + " &#9900; E" + wen[1];
 //        s += '<div class="episode-number col" onmouseover="showDesc(this)" onmouseout="hideDesc(this)">' +
           s += '<div class="episode-number col">' +
-                '<button class="pos-relative mb-4 tal" id="'+epi_num+'" onclick="watch_epi(this.id)">' +
-                    '<span class="main-bg bold-text br-5 p-4 pr-8 pl-8 pos-absolute">'+wen+'</span>' +
+                '<button class="pos-relative tal" id="'+epi_num+'" onclick="watch_epi(this.id)">' +
+                    '<span class="main-bg p-4 pr-8 pl-8 pos-absolute">'+wen+'</span>' +
                     '<img  src="'+img_src+'">' +
-                    '<h6 class="m-4 title main-color">'+title+'</h6>' +
+                    '<h6 class="m-4 p-4 title main-color bold-text br-5">'+title+'</h6>' +
                 '</button>' +
                 '<details>' +
-                    '<summary class="bold-text sec-color pointer">Description</summary>' +
-                    '<p class="sec-color p-8 m-4 br-5">'+desc+'</p>' +
+                    '<summary class="sec-color pointer">Description</summary>' +
+                    '<p class="sec-color p-4 m-4 pl-8 br-5">'+desc+'</p>' +
                 '</details>' +
             '</div>';
     }
     s += '</div>';
-    s += '<button class="primary-border br-10 p-8 pr-12 pl-12 primary-color" onclick="go_home()"><h5>Go to Home</h5></button><br/><br/><br/>';
+    s += '<br/><button class="primary-border br-10 p-8 pr-12 pl-12 primary-color" onclick="go_home()"><h6>Go to Home</h6></button><br/><br/><br/>';
     animationRouter(sc, null, null, "bounceInLeft");
     animationRouter(ms, s, null, "bounceInRight");
 }
@@ -140,6 +147,7 @@ function season_open(s) {
 //function hideDesc(x) { x.getElementsByTagName("details")[0].open = false; }
 
 function watch_epi(epi_id) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     if(sw) {
         cc.style.left = 0;
         cc.style.right = "auto";
@@ -148,14 +156,15 @@ function watch_epi(epi_id) {
     } else {
         cc.parentNode.insertBefore(cc, sc);
     }
-    var nb_lst = [ms, vb, wb, dd[0], dd[1], dn, dh, dtt];
+    var nb_lst = [ms, vb, wb, dd[0], dd[1], dn];
     for(var i in nb_lst) {
         nb_lst[i].classList.toggle("none-box");
     }
     wen = epi_id.split("E");
     wen = wen[0] + " &#9900; E" + wen[1];
     dn.innerHTML = wen;
-    dtt.innerHTML = jf["timeline"][epi_id]["title"];
+    dh_temp = dh.innerHTML;
+    dh.innerHTML = jf["timeline"][epi_id]["title"];
     dt_temp = dt.innerHTML;
     dt.innerHTML = jf["timeline"][epi_id]["des"];
     animationRouter(cc, null, null, "bounceInLeft");
@@ -163,13 +172,17 @@ function watch_epi(epi_id) {
 
     source = document.createElement('source');
     source.setAttribute("poster", jf["timeline"][epi_id]["img_src"]);
-    source.setAttribute("type", "video/mp4");
-    source.setAttribute("src", "https://www56.zippyshare.com/d/ee3VknP9/15395/Friends.S01E03.The.One.With.the.Thumb.720p.BluRay.2CH.x265.HEVC-PSA.mkv");
+    //source.setAttribute("type", "video/mp4");
+    source.setAttribute("src", "https://download948.mediafire.com/xtt3cyz8uvag/8dryh3bn9jqqmc7/Friends.S02E02.The.One.with.the.Breast.Milk.720p.BluRay.2CH.x265.HEVC-PSA.mkv");
     video.appendChild(source);
     video.play();
+    /*source = document.createElement("iframe");
+    source.setAttribute("src", "https://youtube.googleapis.com/embed/?autohide=1&html5=1&ps=picasaweb&use_native_controls=0&enablecastapi=0&color=white&mute=false&enablejsapi=1&origin=https%3A%2F%2Fphotos.google.com&widgetid=1");
+    video.appendChild(source);*/
 }
 
 function back_epi() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     video.removeChild(source);
     if(sw) {
         cc.style.left = "auto";
@@ -181,21 +194,12 @@ function back_epi() {
     }
     animationRouter(cc, null, null, "bounceInRight");
     animationRouter(sc, null, null, "bounceInLeft");
-    var nb_lst = [ms, vb, wb, dd[0], dd[1], dn, dh, dtt];
+    var nb_lst = [ms, vb, wb, dd[0], dd[1], dn];
     for(var i in nb_lst) {
         nb_lst[i].classList.toggle("none-box");
     }
+    dh.innerHTML = dh_temp;
     dt.innerHTML = dt_temp;
-}
-
-function go_home() {
-    cb.href = torrent_main;
-    dh.innerHTML = "Friends";
-    dt.innerHTML = about;
-    dd[0].getElementsByTagName("span")[0].innerHTML = "<u>Range</u>: 1994 - 2004";
-    dd[1].getElementsByTagName("span")[0].innerHTML = "<u>Most Viewed</u>: The One Where Rachel Has a Baby";
-    animationRouter(sc, null, null, "bounceInLeft");
-    animationRouter(ms, explore, null, "bounceInRight");
 }
 
 function share_btn() {
@@ -210,6 +214,6 @@ function share_btn() {
     alert("URL copied, share with friends & family!");
 }
 
-xreq("explore.html");
+xreq("explore.json");
 season_list_inject();
 xreq("ss.json");
