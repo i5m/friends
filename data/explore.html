@@ -1,1 +1,18 @@
-<h1>Hello World</h1>
+<div id="char-special">
+    <span id="cs-thing"></span>
+    like
+    <span id="cs-name"></span>
+</div>
+<script>
+    var cn = ['Chandler', 'Monica', 'Pheobe', 'Joey', 'Ross', 'Rachel'];
+    var ct = ['Sarcastic', 'Clean', 'Live', 'Flirt', 'Care', 'Dress'];
+    var cs_name = document.getElementById("cs-name");
+    var cs_thing = document.getElementById("cs-thing");
+    var i = 0;
+    setTimeout(function() {
+        cs_name.innerHTML = cn[i];
+        cs_thing.innerHTML = ct[i];
+        i++;
+        if(i==6){ i = 0; }
+    }, 1000);
+</script>
