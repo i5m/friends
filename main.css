@@ -5,7 +5,8 @@
     --sec-bg: #3a3b3c;
     --sec-color: #b0b3b8;
     --grey: #808080;
-    --primary-color: #1877f2;
+    /*--primary-color: #1877f2;*/
+    --primary-color: #2D88FF;
     --success-color:#28a745;
     --warning-color:#ffc107;
     --danger-color:#dc3545;
@@ -29,36 +30,6 @@ a, button {
     cursor: pointer;
     background-color: transparent;
 }
-
-/*#grand {
-    z-index: -2;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-    background-image: url(img/f_main.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: blur(5px) brightness(35%);
-}
-
-#try0 {
-    z-index: -1;
-    position: absolute;
-    width: 100vw;
-    height: 100%;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background-color: var(--main-bg);
-    filter: blur(1px) opacity(0.8);
-}*/
-
-/*::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { border-radius: 10px; }
-::-webkit-scrollbar-thumb { background: var(--grey); border-radius: 10px; }*/
 
 html::-webkit-scrollbar { display: none; }
 html { -ms-overflow-style: none; }
@@ -183,7 +154,7 @@ html { -ms-overflow-style: none; }
 .season-number span { font-size: 19px; vertical-align: 50%; }
 
 .episode-number { text-align: left; margin: 15px auto; }
-/*.episode-number img:hover { transform: scale(0.96); }*/
+/*.episode-number img, .episode-number video:hover { transform: scale(0.96); }*/
 .episode-number span { left: 5px; top: 5px; }
 .episode-number details p { border-left: 1.5px solid var(--grey); }
 
@@ -195,9 +166,9 @@ html { -ms-overflow-style: none; }
 }
 @media only screen and (max-width: 851px) { .season-number { width: 40vw; } }
 @media only screen and (max-width: 440px) { .season-number { width: 96%; } }
-@media only screen and (min-width: 1051px) { .episode-number img { width: 22vw; } }
-@media only screen and (max-width: 1050px) { .episode-number img { width: 33vw; } }
-@media only screen and (max-width: 950px) { .episode-number img { width: 32vw; } }
-@media only screen and (max-width: 835px) { .episode-number img { width: 30vw; } }
-@media only screen and (max-width: 700px) { .episode-number img { width: 45vw; } }
-@media only screen and (max-width: 450px) { .episode-number img { width: 88vw; } }
+@media only screen and (min-width: 1051px) { .episode-number img, .episode-number video { width: 22vw; } }
+@media only screen and (max-width: 1050px) { .episode-number img, .episode-number video { width: 33vw; } }
+@media only screen and (max-width: 950px) { .episode-number img, .episode-number video { width: 32vw; } }
+@media only screen and (max-width: 835px) { .episode-number img, .episode-number video { width: 30vw; } }
+@media only screen and (max-width: 700px) { .episode-number img, .episode-number video { width: 45vw; } }
+@media only screen and (max-width: 450px) { .episode-number img, .episode-number video { width: 88vw; } }
