@@ -1,4 +1,3 @@
-//const con = document.getElementsByClassName("container")[0];
 const sc = document.getElementById("sidecar");
 const dd = document.getElementById("des-details").getElementsByTagName("div");
 const dn = document.getElementById("des-num");
@@ -27,7 +26,7 @@ const torrents = [
     'magnet:?xt=urn:btih:95e340a37867ce9270b9fda9270ed9236f093bba&dn=Friends+Season+9+Complete+720p.BRrip.mrlss.Sujaidr+%28pimprg%29&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Fzer0day.ch%3A1337&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969',
     'magnet:?xt=urn:btih:753c3b362e22ee808b49f8e864b99fded7fdab57&dn=Friends+Season+10+Complete+720p.BRrip.Sujaidr+%28pimprg%29&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Fzer0day.ch%3A1337&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969'
 ]
-var data = explore_ele = explore_js = jf = dh_temp = dt_temp = source = sw = '';
+var data = explore = jf = dh_temp = dt_temp = source = sw = '';
 
 function season_list_inject() {
     var s = '';
@@ -49,10 +48,6 @@ if(sw) {
 }
 
 function opt_switcher() {
-    /*wb.classList.add('animated', 'tada');
-    wb.addEventListener('animationend', function() {
-        wb.classList.remove('animated', 'tada');
-    });*/
     if(sw) {
         sc.classList.toggle("pos-absolute");
         sc.classList.toggle("pos-fixed");
@@ -61,15 +56,11 @@ function opt_switcher() {
 }
 
 function animationRouter(element, str, animationOutName, animationInName) {
-    //element.classList.add('animated', animationOutName);
-    //element.addEventListener('animationend', function() {
-        //element.classList.remove('animated', animationOutName);
         if(str != null) { element.innerHTML = str; }
         element.classList.add('animated', animationInName);
         element.addEventListener('animationend', function() {
             element.classList.remove('animated', animationInName);
         });
-    //});
 }
 
 function xreq(url) {
@@ -78,9 +69,9 @@ function xreq(url) {
         if (this.readyState == 4 && this.status == 200) {
             if(url == "ss.json") {
                 data = JSON.parse(this.responseText);
-            } else if(url == "explore.json") {
-                explore_js = JSON.parse(this.responseText);
-                go_explore();
+            } else if(url == "explore.html") {
+                explore = this.responseText;
+                go_home();
             }
         }
     };
@@ -88,26 +79,22 @@ function xreq(url) {
     xhttp.send();
 }
 
-function go_explore() {
-    go_home();
-}
-
 function go_home() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     cb.href = torrent_main;
-    dh.innerHTML = "<h1 class='bold-text'>Friends</h1>";
+    dh.innerHTML = "Friends";
     dt.innerHTML = about;
     dd[0].getElementsByTagName("span")[0].innerHTML = "Range: <b>1994 - 2004</b>";
     dd[1].getElementsByTagName("span")[0].innerHTML = "Most Viewed: <b>The One Where Rachel Has a Baby</b>";
     animationRouter(sc, null, null, "bounceInLeft");
-    animationRouter(ms, explore_ele, null, "bounceInRight");
+    animationRouter(ms, explore, null, "bounceInRight");
 }
 
 function season_open(s) {
     scb.toggleAttribute("open");
     opt_switcher();
     jf = data[s];
-    dh.innerHTML = "<h2 class='bold-text'>Season " + jf["season"] + "</h2>";
+    dh.innerHTML = "Season " + jf["season"];
     dt.innerHTML = jf["about"];
     dd[0].getElementsByTagName("span")[0].innerHTML = "Year: <b>" + jf["year"] + "</b>";
     dd[1].getElementsByTagName("span")[0].innerHTML = "Most Viewed: <b>" + jf["mv"] + "</b>";
@@ -124,14 +111,14 @@ function season_open(s) {
         desc = jf["timeline"][i]["des"];
         wen = epi_num.split("E");
         wen = wen[0] + " &#9900; E" + wen[1];
-//        s += '<div class="episode-number col" onmouseover="showDesc(this)" onmouseout="hideDesc(this)">' +
-          s += '<div class="episode-number col">' +
-                '<button class="pos-relative tal" id="'+epi_num+'" onclick="watch_epi(this.id)">' +
+        s += '<div class="episode-number col">' +
+                '<button class="pos-relative tal" id="'+epi_num+'" onclick="watch_epi(this.id)" onmouseover="showSVidLong(this)" onmouseout="hideSVidLong(this)">' +
                     '<span class="main-bg p-4 pr-8 pl-8 pos-absolute">'+wen+'</span>' +
-                    '<img  src="'+img_src+'">' +
+                    '<img src="'+img_src+'">' +
+                    '<video class="none-box" loop autoplay></video>' +
                     '<h6 class="m-4 p-4 title main-color bold-text br-5">'+title+'</h6>' +
                 '</button>' +
-                '<details>' +
+                '<details onclick="showSVid_det(this)">' +
                     '<summary class="sec-color pointer">Description</summary>' +
                     '<p class="sec-color p-4 m-4 pl-8 br-5">'+desc+'</p>' +
                 '</details>' +
@@ -143,8 +130,22 @@ function season_open(s) {
     animationRouter(ms, s, null, "bounceInRight");
 }
 
-//function showDesc(x) { x.getElementsByTagName("details")[0].open = true; }
-//function hideDesc(x) { x.getElementsByTagName("details")[0].open = false; }
+function showSVidLong(x) {
+    vvv = x.getElementsByTagName("video")[0];
+    vvv.setAttribute("src", "data/clips/" + x.id + ".mp4");
+    vvv.classList.remove("none-box");
+    x.getElementsByTagName("img")[0].classList.add("none-box");
+}
+function hideSVidLong(x) {
+    vvv = x.getElementsByTagName("video")[0];
+    vvv.setAttribute("src", "");
+    vvv.classList.add("none-box");
+    x.getElementsByTagName("img")[0].classList.remove("none-box");
+}
+function showSVid_det(x) {
+    if(x.open == false) { showSVidLong(x.previousSibling); }
+    else { hideSVidLong(x.previousSibling); }
+}
 
 function watch_epi(epi_id) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -173,12 +174,9 @@ function watch_epi(epi_id) {
     source = document.createElement('source');
     source.setAttribute("poster", jf["timeline"][epi_id]["img_src"]);
     //source.setAttribute("type", "video/mp4");
-    source.setAttribute("src", "https://download948.mediafire.com/xtt3cyz8uvag/8dryh3bn9jqqmc7/Friends.S02E02.The.One.with.the.Breast.Milk.720p.BluRay.2CH.x265.HEVC-PSA.mkv");
+    source.setAttribute("src", "data/clips/S3E5.mp4");
     video.appendChild(source);
     video.play();
-    /*source = document.createElement("iframe");
-    source.setAttribute("src", "https://youtube.googleapis.com/embed/?autohide=1&html5=1&ps=picasaweb&use_native_controls=0&enablecastapi=0&color=white&mute=false&enablejsapi=1&origin=https%3A%2F%2Fphotos.google.com&widgetid=1");
-    video.appendChild(source);*/
 }
 
 function back_epi() {
@@ -214,6 +212,6 @@ function share_btn() {
     alert("URL copied, share with friends & family!");
 }
 
-xreq("explore.json");
 season_list_inject();
 xreq("ss.json");
+xreq("explore.html");
