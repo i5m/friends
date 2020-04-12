@@ -3,56 +3,72 @@
 <head>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
     <title>We were on a break!</title>
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"><link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 </head>
 <body>
-    <div id="grand"></div>
-    <nav class="navbar p-8 pos-fixed main-bg">
+
+    <!--<div id="grand"></div>-->
+
+    <nav class="navbar p-8 pos-fixed">
+        <div id="nav-blur" class="pos-fixed"></div>
         <a href="index.html" id="f_logo"><img src="img/f_logo.png" width="150"></a>
     </nav>
+
     <br/><br/><br/><br/>
+
     <div class="container">
-        <div id="sidecar" class="p-12 m-8">
+        <div id="sidecar" class="p-12">
+            <!--<div id="try0"></div>-->
             <div id="description" class="tal">
-                <h4 id="des-num" class="primary-color none-box pb-8"></h4>
-                <h2 id="des-heading" class="bold-text pb-8"></h2>
-                <h5 class="sec-color pb-8" id="des-text"></h5>
-                <div id="des-details">
-                    <div class="m-8 p-4"><img src="img/des/time.svg" width="25"><span class="ml-12"></span></div>
-                    <div class="m-8 p-4"><img src="img/des/star.svg" width="25"><span class="ml-12"></span></div>
+                <h4 id="des-num" class="primary-color none-box p-8"></h4>
+                <span id="des-heading" class="p-8 block-box"></span>
+                <h5 class="sec-color p-8" id="des-text"></h5>
+                <div id="des-details" class="p-8">
+                    <div class="p-12">
+                        <img class="pr-12" src="img/des/time.svg" width="28">
+                        <h5 id="des-details-time"></h5>
+                    </div>
+                    <div class="p-12">
+                        <img class="pr-12" src="img/des/star.svg" width="28">
+                        <h5 id="des-details-fav"></h5>
+                    </div>
                 </div>
             </div>
-            <div id="btns-box" class="row pt-8 pb-8">
+            <div id="btns-box" class="row p-12">
                 <a id="cloud-btn" href="#" target="_blank">
-                    <img class="p-8 br-round sec-bg" src="img/des/cloud.svg" width="25">
+                    <img class="p-8 br-round sec-bg" src="img/des/cloud.svg" width="28">
                     <h6 class="bold-text mt-8">Torrent</h6>
                 </a>
                 <button onclick="share_btn()">
-                    <img class="p-8 br-round sec-bg" src="img/des/share.svg" width="25">
+                    <img class="p-8 br-round sec-bg" src="img/des/share.svg" width="28">
                     <h6 class="bold-text mt-8">Share</h6>
                 </button>
             </div>
-            <details id="season-chooser">
-                <summary class="primary-color-bg bold-text br-10 m-4 p-8 pointer animated tada" id="watch-btn" onclick="opt_switcher()">WATCH</summary>
-                <br/><h5>Select a season: </h5><br/>
+            <details id="season-chooser" class="p-8">
+                <summary class="primary-color-bg bold-text br-10 p-8 pointer animated tada" id="watch-btn" onclick="opt_switcher()">
+                    <span class="h5 bold-text">WATCH</span>
+                </summary>
+                <h5 class="p-8 m-8">Select a season: </h5>
                 <div id="season-list"></div>
             </details>
         </div>
-        <div id="centercar" class="p-4 m-4">
+        <div id="centercar">
             <div id="main-section"></div>
             <div id="video-box" class="none-box">
-                <button class="block-box h4 m-4 mb-12 pb-12" onclick="back_epi()">
+                <button class="block-box h4 m-8 p-8" onclick="back_epi()">
                     <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                     <span class="bold-text">Back</span>
                 </button>
-                <video id="epi-video"></video>
+                <video id="epi-video" controls loop autoplay></video>
             </div>
         </div>
     </div>
+
     <br/><br/><br/><br/>
+
     <script src="main.js"></script>
+
 </body>
 </html>

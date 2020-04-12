@@ -18,7 +18,7 @@
 html {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
-    background-color: var(--main-bg);
+    background: linear-gradient(to right, var(--main-bg), var(--sec-bg), var(--main-bg));
     color: var(--main-color);
     text-align: center;
 }
@@ -30,6 +30,36 @@ a, button {
     cursor: pointer;
     background-color: transparent;
 }
+
+/*#grand {
+    z-index: -2;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-image: url(img/f_main.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(5px) brightness(35%);
+}
+
+#try0 {
+    z-index: -1;
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--main-bg);
+    filter: blur(1px) opacity(0.8);
+}*/
+
+/*::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: var(--grey); border-radius: 10px; }*/
 
 html::-webkit-scrollbar { display: none; }
 html { -ms-overflow-style: none; }
@@ -80,6 +110,15 @@ html { -ms-overflow-style: none; }
 .br-5 { border-radius: 5px; }
 .br-10 { border-radius: 10px; }
 .br-round { border-radius: 2000px; }
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+.h1, h1 { font-size: 2.5rem; }
+.h2, h2 { font-size: 2rem; }
+.h3, h3 { font-size: 1.75rem; }
+.h4, h4 { font-size: 1.5rem; }
+.h5, h5 { font-size: 1.2rem; }
+.h6, h6 { font-size: 1rem; }
+
 .bold-text { font-weight: bold; }
 .underlined { text-decoration: underline; }
 .pointer { cursor: pointer; }
@@ -120,55 +159,52 @@ html { -ms-overflow-style: none; }
 .block-box { display: block; }
 .none-box { display: none; }
 
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 { font-weight: normal; }
-.h1, h1 { font-size: 2.5rem; }
-.h2, h2 { font-size: 2rem; }
-.h3, h3 { font-size: 1.75rem; }
-.h4, h4 { font-size: 1.5rem; }
-.h5, h5 { font-size: 1.25rem; }
-.h6, h6 { font-size: 1rem; }
-
 .tal { text-align: left; }
 .tar { text-align: right; }
 .tac { text-align: center; }
 
 .navbar {
+    top:0;
     z-index: 99;
     width: 100vw;
-    position: fixed;
     left: 0;
-    border-bottom: 2px solid var(--sec-bg);
+}
+#nav-blur {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    filter: opacity(0.8) brightness(80%);
+    background: linear-gradient(to right, var(--main-bg), var(--sec-bg), var(--main-bg));
+
 }
 
 #season-chooser { margin: 20px auto; }
-#season-chooser summary { margin: auto; }
-#watch-btn { max-width: 350px; font-size: 18px; }
+#watch-btn { margin: auto; max-width: 350px; }
+#des-details img { float: left; }
 
-#des-details span { font-size: 1.1rem; vertical-align: 42%; }
-#des-details .row span { vertical-align: 25%; }
+.season-number { border-bottom: 1px solid var(--sec-bg); width: 98%; }
+.season-number span { vertical-align: 50%; }
 
-#video-box button.h4 span { vertical-align: 15%; }
-#epi-video { border-radius: 10px; width: 90vw; }
-
-.season-number { width: 96%; border-bottom: 1.5px solid var(--sec-bg); }
-.season-number span { font-size: 19px; vertical-align: 50%; }
-
-.episode-number { text-align: left; margin: 15px auto; }
-/*.episode-number img, .episode-number video:hover { transform: scale(0.96); }*/
+.episode-number { margin: 20px auto; }
 .episode-number span { left: 5px; top: 5px; }
 .episode-number details p { border-left: 1.5px solid var(--grey); }
 
-@media only screen and (min-width: 951px) {
+#video-box button.h4 span { vertical-align: 15%; }
+#epi-video { width: 100%; }
+
+@media only screen and (min-width: 960px) {
     #sidecar { left: 0; width: 27vw; }
-    #epi-video { width: 60vw; }
+    #epi-video { width: 65vw; }
     /*#try0 { width: 30vw; position: fixed; }*/
-    #centercar { right: 0; width: 70vw; }
+    #centercar { right: 0; width: 70.5vw; }
 }
 @media only screen and (max-width: 851px) { .season-number { width: 40vw; } }
-@media only screen and (max-width: 440px) { .season-number { width: 96%; } }
-@media only screen and (min-width: 1051px) { .episode-number img, .episode-number video { width: 22vw; } }
-@media only screen and (max-width: 1050px) { .episode-number img, .episode-number video { width: 33vw; } }
-@media only screen and (max-width: 950px) { .episode-number img, .episode-number video { width: 32vw; } }
-@media only screen and (max-width: 835px) { .episode-number img, .episode-number video { width: 30vw; } }
-@media only screen and (max-width: 700px) { .episode-number img, .episode-number video { width: 45vw; } }
-@media only screen and (max-width: 450px) { .episode-number img, .episode-number video { width: 88vw; } }
+@media only screen and (max-width: 440px) { .season-number { width: 100%; } }
+@media only screen and (min-width: 1051px) { .episode-number video { width: 22.5vw; } }
+@media only screen and (max-width: 1050px) { .episode-number video { width: 34vw; } }
+@media only screen and (max-width: 950px) { .episode-number video { width: 32vw; } }
+@media only screen and (max-width: 700px) { .episode-number video { width: 48vw; } }
+@media only screen and (max-width: 450px) { .episode-number video { width: 92vw; } }
